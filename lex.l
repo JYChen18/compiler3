@@ -1,5 +1,8 @@
 %{
-    #include"yacc.tab.h"
+    #include<string.h>
+    #include<stdio.h>
+    #include<stdlib.h>
+    #include"yacc.tab.hpp"
     void yyerror(const char*);
     int lineno = 1;
 %}
@@ -28,27 +31,27 @@ malloc      return MALLOC;
 end         return END;
 "="           return ASSIGN;
 
-"!="          {yylval=yytext; return OP;}
-"=="          {yylval=yytext; return OP;}
-"<"           {yylval=yytext; return OP;}
-">"           {yylval=yytext; return OP;}
-"<="          {yylval=yytext; return OP;}
-">="          {yylval=yytext; return OP;}
-"+"           {yylval=yytext; return OP;}
-"-"           {yylval=yytext; return OP;}
-"*"           {yylval=yytext; return OP;}
-"/"           {yylval=yytext; return OP;}
-"!"           {yylval=yytext; return OP;}
-"&&"          {yylval=yytext; return OP;}
-"||"          {yylval=yytext; return OP;}
-"%"           {yylval=yytext; return OP;}
+"!="          {yylval.str=strdup(yytext); return OP;}
+"=="          {yylval.str=strdup(yytext); return OP;}
+"<"           {yylval.str=strdup(yytext); return OP;}
+">"           {yylval.str=strdup(yytext); return OP;}
+"<="          {yylval.str=strdup(yytext); return OP;}
+">="          {yylval.str=strdup(yytext); return OP;}
+"+"           {yylval.str=strdup(yytext); return OP;}
+"-"           {yylval.str=strdup(yytext); return OP;}
+"*"           {yylval.str=strdup(yytext); return OP;}
+"/"           {yylval.str=strdup(yytext); return OP;}
+"!"           {yylval.str=strdup(yytext); return OP;}
+"&&"          {yylval.str=strdup(yytext); return OP;}
+"||"          {yylval.str=strdup(yytext); return OP;}
+"%"           {yylval.str=strdup(yytext); return OP;}
 
 
-label       {yylval=yytext; return LABEL;}
-func        {yylval=yytext; return FUNC;}
-reg         {yylval=yytext; return REG;}
-var         {yylval=yytext; return VAR;}
-integer     {yylval=yytext; return INT;}
+label       {yylval.str=strdup(yytext); return LABEL;}
+func        {yylval.str=strdup(yytext); return FUNC;}
+reg         {yylval.str=strdup(yytext); return REG;}
+var         {yylval.str=strdup(yytext); return VAR;}
+integer     {yylval.num=atoi(yytext); return INT;}
 [\n]	    { lineno++; return ENTER; }
 [ \t]+                  /* ignore whitespace */;
 "//"[^\n]*                 /* ignore comment */;
@@ -58,3 +61,15 @@ integer     {yylval=yytext; return INT;}
 	yyerror(msg);
 }
 %%
+
+int yywrap() 
+{ 
+   return(1); 
+}
+
+int main(int argc, char** argv)
+{
+	yyparse();
+	return 0;
+} 
+
