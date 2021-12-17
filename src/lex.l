@@ -54,7 +54,7 @@ reg         (a[0-7]|s[0-9]|s10|s11|t[0-6]|x0)
 [\n]	    { lineno++; return ENTER; }
 [ \t]+                 /* ignore whitespace */;
 "//"[^\n]*                 /* ignore comment */;
-. {printf("Undefined!");}
+. {}
 %%
 
 int yywrap() 

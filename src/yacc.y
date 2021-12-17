@@ -78,6 +78,7 @@ FunctionEnd:
     
 Expressions: 
     Expressions Expression 
+    | Expressions ENTER
     | { }
     ;
 
