@@ -29,9 +29,9 @@ int STK = 0;
 
 %%
 
-Program : Program FUNCFunctionDef 
-        | Program GlobalVarDecl 
-        | {}
+Program : Program FUNCFunctionDef  {printf("1");}
+        | Program GlobalVarDecl  {printf("2");}
+        | {printf("3");}
         ;
 GlobalVarDecl:
     VAR ASSIGN INT ENTER

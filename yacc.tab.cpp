@@ -1378,10 +1378,22 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 2:
+#line 32 "yacc.y"
+                                   {printf("1");}
+#line 1385 "yacc.tab.cpp"
+    break;
+
+  case 3:
+#line 33 "yacc.y"
+                                 {printf("2");}
+#line 1391 "yacc.tab.cpp"
+    break;
+
   case 4:
 #line 34 "yacc.y"
-          {}
-#line 1385 "yacc.tab.cpp"
+          {printf("3");}
+#line 1397 "yacc.tab.cpp"
     break;
 
   case 5:
@@ -1395,7 +1407,7 @@ yyreduce:
         fprintf(yyout, "%s:\n", (yyvsp[-3].str));
         fprintf(yyout, "\t.word int\n");
     }
-#line 1399 "yacc.tab.cpp"
+#line 1411 "yacc.tab.cpp"
     break;
 
   case 6:
@@ -1403,7 +1415,7 @@ yyreduce:
     {
         fprintf(yyout, "\t.comm %s, %d, 4\n", (yyvsp[-4].str), (yyvsp[-1].num));
     }
-#line 1407 "yacc.tab.cpp"
+#line 1419 "yacc.tab.cpp"
     break;
 
   case 8:
@@ -1418,7 +1430,7 @@ yyreduce:
         fprintf(yyout, "\taddi sp, sp, %d\n", -STK);
         fprintf(yyout, "\tsw ra, %d(sp)\n", STK-4);
     }
-#line 1422 "yacc.tab.cpp"
+#line 1434 "yacc.tab.cpp"
     break;
 
   case 9:
@@ -1426,13 +1438,13 @@ yyreduce:
     {
 	    fprintf(yyout, "\t.size %s, .-%s\n", (yyvsp[-1].str), (yyvsp[-1].str));
     }
-#line 1430 "yacc.tab.cpp"
+#line 1442 "yacc.tab.cpp"
     break;
 
   case 11:
 #line 80 "yacc.y"
       { }
-#line 1436 "yacc.tab.cpp"
+#line 1448 "yacc.tab.cpp"
     break;
 
   case 12:
@@ -1440,7 +1452,7 @@ yyreduce:
     {
         fprintf(yyout, "\tli %s, %d\n", (yyvsp[-3].str), (yyvsp[-1].num));
     }
-#line 1444 "yacc.tab.cpp"
+#line 1456 "yacc.tab.cpp"
     break;
 
   case 13:
@@ -1503,7 +1515,7 @@ yyreduce:
 			    break;
         }
     }
-#line 1507 "yacc.tab.cpp"
+#line 1519 "yacc.tab.cpp"
     break;
 
   case 14:
@@ -1577,7 +1589,7 @@ yyreduce:
                 break; 
         }
     }
-#line 1581 "yacc.tab.cpp"
+#line 1593 "yacc.tab.cpp"
     break;
 
   case 15:
@@ -1595,7 +1607,7 @@ yyreduce:
                 break;
         }
     }
-#line 1599 "yacc.tab.cpp"
+#line 1611 "yacc.tab.cpp"
     break;
 
   case 16:
@@ -1603,7 +1615,7 @@ yyreduce:
     {
         fprintf(yyout, "\tmv %s, %s\n", (yyvsp[-3].str), (yyvsp[-1].str));
     }
-#line 1607 "yacc.tab.cpp"
+#line 1619 "yacc.tab.cpp"
     break;
 
   case 17:
@@ -1611,7 +1623,7 @@ yyreduce:
     {
         fprintf(yyout, "\tsw %s, %d(%s)\n", (yyvsp[-1].str), (yyvsp[-4].num), (yyvsp[-6].str));
     }
-#line 1615 "yacc.tab.cpp"
+#line 1627 "yacc.tab.cpp"
     break;
 
   case 18:
@@ -1619,7 +1631,7 @@ yyreduce:
     {
         fprintf(yyout, "\tlw %s, %d(%s)\n", (yyvsp[-6].str), (yyvsp[-2].num), (yyvsp[-4].str));
     }
-#line 1623 "yacc.tab.cpp"
+#line 1635 "yacc.tab.cpp"
     break;
 
   case 19:
@@ -1638,7 +1650,7 @@ yyreduce:
         else if (strcmp((yyvsp[-4].str), "==")==0){
                 fprintf(yyout, "\tbeq %s, %s, .%s\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str));}
     }
-#line 1642 "yacc.tab.cpp"
+#line 1654 "yacc.tab.cpp"
     break;
 
   case 20:
@@ -1646,7 +1658,7 @@ yyreduce:
     {
         fprintf(yyout, "\tj .%s\n", (yyvsp[-1].str));
     }
-#line 1650 "yacc.tab.cpp"
+#line 1662 "yacc.tab.cpp"
     break;
 
   case 21:
@@ -1654,7 +1666,7 @@ yyreduce:
     {
         fprintf(yyout, ".%s:\n", (yyvsp[-2].str));
     }
-#line 1658 "yacc.tab.cpp"
+#line 1670 "yacc.tab.cpp"
     break;
 
   case 22:
@@ -1662,7 +1674,7 @@ yyreduce:
     {
         fprintf(yyout, "\tcall %s\n", (yyvsp[-1].str));
     }
-#line 1666 "yacc.tab.cpp"
+#line 1678 "yacc.tab.cpp"
     break;
 
   case 23:
@@ -1673,7 +1685,7 @@ yyreduce:
         fprintf(yyout, "\tret\n");
 
     }
-#line 1677 "yacc.tab.cpp"
+#line 1689 "yacc.tab.cpp"
     break;
 
   case 24:
@@ -1681,7 +1693,7 @@ yyreduce:
     {
         fprintf(yyout, "\tsw %s, %d(sp)\n", (yyvsp[-2].str), (yyvsp[-1].num)*4);
     }
-#line 1685 "yacc.tab.cpp"
+#line 1697 "yacc.tab.cpp"
     break;
 
   case 25:
@@ -1689,7 +1701,7 @@ yyreduce:
     {
         fprintf(yyout, "\tlw %s, %d(sp)\n", (yyvsp[-1].str), (yyvsp[-2].num)*4);
     }
-#line 1693 "yacc.tab.cpp"
+#line 1705 "yacc.tab.cpp"
     break;
 
   case 26:
@@ -1698,7 +1710,7 @@ yyreduce:
         fprintf(yyout, "\tlui %s, %%hi(%s)\n", (yyvsp[-1].str), (yyvsp[-2].str));
         fprintf(yyout, "\tlw %s, %%lo(%s)(%s)\n", (yyvsp[-1].str), (yyvsp[-2].str), (yyvsp[-1].str));
     }
-#line 1702 "yacc.tab.cpp"
+#line 1714 "yacc.tab.cpp"
     break;
 
   case 27:
@@ -1706,7 +1718,7 @@ yyreduce:
     {
         fprintf(yyout, "\taddi %s, sp, %d\n", (yyvsp[-1].str), (yyvsp[-2].num)*4);
     }
-#line 1710 "yacc.tab.cpp"
+#line 1722 "yacc.tab.cpp"
     break;
 
   case 28:
@@ -1714,11 +1726,11 @@ yyreduce:
     {
         fprintf(yyout, "\tla %s, %s\n", (yyvsp[-1].str), (yyvsp[-2].str));
     }
-#line 1718 "yacc.tab.cpp"
+#line 1730 "yacc.tab.cpp"
     break;
 
 
-#line 1722 "yacc.tab.cpp"
+#line 1734 "yacc.tab.cpp"
 
       default: break;
     }
