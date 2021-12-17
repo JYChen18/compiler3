@@ -43,7 +43,7 @@ GlobalVarDecl:
         fprintf(yyout, "\t.type %s, @object\n", $1);      
         fprintf(yyout, "\t.size %s, 4\n", $1);
         fprintf(yyout, "%s:\n", $1);
-        fprintf(yyout, "\t.word int\n");
+        fprintf(yyout, "\t.word %d\n", $3);
     }
     | VAR ASSIGN MALLOC INT ENTER
     {

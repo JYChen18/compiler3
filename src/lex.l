@@ -47,7 +47,7 @@ reg         (a[0-7]|s[0-9]|s10|s11|t[0-6]|x0)
 
 
 {label}       {yylval.str=strdup(yytext); return LABEL;}
-{func}        {yylval.str=strdup(yytext); return FUNC;}
+{func}        {yylval.str=strdup(yytext+2); return FUNC;}
 {reg}         {yylval.str=strdup(yytext); return REG;}
 {var}         {yylval.str=strdup(yytext); return VAR;}
 {integer}     {yylval.num=atoi(yytext); return INT;}
