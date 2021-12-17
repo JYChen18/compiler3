@@ -15,7 +15,7 @@ var         v{integer}
 reg         (a[0-7]|s[0-9]|s10|s11|t[0-6]|x0)
 
 %%
-"v0"        {printf("test!!");return VAR;}
+
 ":"           return COL;
 "["         return LBRK;
 "]"         return RBRK;
@@ -46,12 +46,12 @@ reg         (a[0-7]|s[0-9]|s10|s11|t[0-6]|x0)
 "%"           {yylval.str=strdup(yytext); return OP;}
 
 
-{label}       {printf("label");yylval.str=strdup(yytext); return LABEL;}
-{func}        {printf("func");yylval.str=strdup(yytext); return FUNC;}
-{reg}         {printf("reg");yylval.str=strdup(yytext); return REG;}
-{var}         {printf("varr"); yylval.str=strdup(yytext); return VAR;}
-{integer}     {printf("int");yylval.num=atoi(yytext); return INT;}
-[\n]	    { lineno++;printf("aaa"); return ENTER; }
+{label}       {yylval.str=strdup(yytext); return LABEL;}
+{func}        {yylval.str=strdup(yytext); return FUNC;}
+{reg}         {yylval.str=strdup(yytext); return REG;}
+{var}         {yylval.str=strdup(yytext); return VAR;}
+{integer}     {yylval.num=atoi(yytext); return INT;}
+[\n]	    { lineno++; return ENTER; }
 [ \t]+                 /* ignore whitespace */;
 "//"[^\n]*                 /* ignore comment */;
 . {printf("Undefined!");}
@@ -64,7 +64,12 @@ int yywrap()
 
 int main(int argc, char** argv)
 {
-	yyparse();
-	return 0;
+    if((yyin=fopen(argv[2],"r"))==NULL)
+            exit(1);
+    yyout=fopen(argv[4],"w");
+    yyparse();
+    fclose(yyin);
+    fclose(yyout);
+    return 0;
 } 
 

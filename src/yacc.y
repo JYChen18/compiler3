@@ -29,9 +29,10 @@ int STK = 0;
 
 %%
 
-Program : Program FUNCFunctionDef  {printf("1");}
-        | Program GlobalVarDecl  {printf("2");}
-        | {printf("3");}
+Program : Program FUNCFunctionDef  {}
+        | Program GlobalVarDecl  {}
+        | Program ENTER {}
+        | {}
         ;
 GlobalVarDecl:
     VAR ASSIGN INT ENTER
@@ -51,7 +52,7 @@ GlobalVarDecl:
     ;
 
 FUNCFunctionDef: 
-    FunctionHeader Expressions FunctionEnd
+    FunctionHeader Expressions FunctionEnd {}
     ;
 
 FunctionHeader: 
